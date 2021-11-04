@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,3 +22,4 @@ public class LoadSaveText_Unity3D_TextFile : MonoBehaviour, RTE.RuntimeTextEdit.
     textComp.text = textFromFile;
   }
 }
+#endif

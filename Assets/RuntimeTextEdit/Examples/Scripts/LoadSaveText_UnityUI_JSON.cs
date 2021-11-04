@@ -1,3 +1,4 @@
+#if UNITY_EDITOR 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,3 +33,4 @@ public class LoadSaveText_UnityUI_JSON : MonoBehaviour, RTE.RuntimeTextEdit.Text
     System.IO.File.WriteAllText(filePath, json);
   }
 }
+#endif

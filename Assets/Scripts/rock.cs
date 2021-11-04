@@ -9,6 +9,12 @@ public class rock : MonoBehaviour
     float x_rand = 0;
     Transform rock_pos;
     int speed = 10;
+
+    public rock(int speed)
+    {
+        this.speed = speed;
+    }
+
     Rigidbody2D hor_rock;
     void Start()
     {

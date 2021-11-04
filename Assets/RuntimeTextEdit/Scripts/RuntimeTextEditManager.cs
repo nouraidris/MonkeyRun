@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +11,7 @@ namespace RTE
   {
     public KeyCode armKey = KeyCode.RightControl;
 
-    private List<RuntimeTextEdit> textEditComponents = new List<RuntimeTextEdit>();
+    private readonly List<RuntimeTextEdit> textEditComponents = new List<RuntimeTextEdit>();
 
     private bool isActive = false;
 
@@ -48,12 +49,9 @@ namespace RTE
       }
     }
 
-    public void DeactivateMe(RuntimeTextEdit comp)
-    {
-      comp.enabled = false;
-    }
+        public void DeactivateMe(RuntimeTextEdit comp) => comp.enabled = false;
 
-    void Update()
+        void Update()
     {
       if(Input.GetKey(armKey) && isActive == false)
       {
@@ -165,3 +163,4 @@ namespace RTE
   }
 
 }
+#endif

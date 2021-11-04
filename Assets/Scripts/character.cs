@@ -45,8 +45,10 @@ public class character : MonoBehaviour
     {
         if (collision.gameObject.tag == "banana")
         {
+            soundManager.instance.coinsscource.PlayOneShot(soundManager.instance.coinSound);
             points += 1;
-            ScoreScript.instance.AddPoint(); 
+            ScoreScript.instance.AddPoint();
+
             Transform current_banana_pos = collision.gameObject.transform;
             collision.gameObject.SetActive(false);
         }
@@ -54,6 +56,7 @@ public class character : MonoBehaviour
         {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             var over = GameObject.FindGameObjectWithTag("game_over");
+            sound3.instance.losesource.PlayOneShot(sound3.instance.loseSound);
             var render = over.GetComponent<Renderer>();
             render.sortingOrder = 10;
         }
@@ -77,9 +80,11 @@ public class character : MonoBehaviour
     {
         while (true)
         {
+           
             yield return new WaitForSeconds(1f);
-            if (points == 15)
+            if (points == 2)
             {
+                sound2.instance.winsource.PlayOneShot(sound2.instance.winSound);
                 var won = GameObject.FindGameObjectWithTag("win");
                 var render = won.GetComponent<Renderer>();
                 render.sortingOrder = 20;

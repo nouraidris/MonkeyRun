@@ -7,7 +7,6 @@ public class ScoreScript : MonoBehaviour
 {
     public static ScoreScript instance;
     public Text scoreText;
-
     int score = 0;
 
     private void Awake()
@@ -28,5 +27,4 @@ public class ScoreScript : MonoBehaviour
         score += 1;
         scoreText.text = score.ToString() + "POINTS";
     }
-
 }

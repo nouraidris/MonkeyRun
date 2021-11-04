@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,6 @@ using UnityEngine.Events;
 using System;
 using System.IO;
 using UnityEngine.UI;
-using UnityEditorInternal;
 using TMPro;
 using UnityEditor.Presets;
 using UnityEditor;
@@ -266,7 +266,7 @@ namespace RTE
         return comp.transform;
       }
 
-      public override Preset GetPresetOfInternalComp()
+            public override Preset GetPresetOfInternalComp()
       {
         return new Preset(comp);
       }
@@ -861,3 +861,4 @@ namespace RTE
   }
 
 }
+#endif

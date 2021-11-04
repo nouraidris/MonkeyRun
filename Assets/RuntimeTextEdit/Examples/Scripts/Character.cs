@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using RTE;
 using System;
 
-public class Character : MonoBehaviour, RuntimeTextEdit.TextEditCallback
+public class Character : MonoBehaviour
 {
   public string monologueJsonFile;
   public string jumpTextFile;

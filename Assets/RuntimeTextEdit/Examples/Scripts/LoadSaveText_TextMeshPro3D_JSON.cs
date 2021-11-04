@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,3 +33,4 @@ public class LoadSaveText_TextMeshPro3D_JSON : MonoBehaviour, RTE.RuntimeTextEdi
     System.IO.File.WriteAllText(filePath, json);
   }
 }
+#endif
