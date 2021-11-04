@@ -47,7 +47,7 @@ public class rock : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             x_rand = Random.Range(-7.43f, 9.3f);
-            this.gameObject.transform.position = new Vector3(x_rand, 7.06f, 14.03f);
+            this.gameObject.transform.position = new Vector3(x_rand, 11.63f, 14.03f);
 
         }
 

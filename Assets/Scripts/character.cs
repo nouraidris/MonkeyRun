@@ -12,6 +12,7 @@ public class character : MonoBehaviour
     int points = 0;
     GameObject game_over;
     GameObject[] bananas;
+   bool winner = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,9 @@ public class character : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "banana")
+        if (collision.gameObject.tag == "banana" && winner == false )
         {
+
             soundManager.instance.coinsscource.PlayOneShot(soundManager.instance.coinSound);
             points += 1;
             ScoreScript.instance.AddPoint();
@@ -52,7 +54,7 @@ public class character : MonoBehaviour
             Transform current_banana_pos = collision.gameObject.transform;
             collision.gameObject.SetActive(false);
         }
-        if (collision.gameObject.tag == "rock")
+        if (collision.gameObject.tag == "rock" && winner == false)
         {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             var over = GameObject.FindGameObjectWithTag("game_over");
@@ -82,12 +84,14 @@ public class character : MonoBehaviour
         {
            
             yield return new WaitForSeconds(1f);
-            if (points == 2)
+            if (points == 15 && winner == false) 
             {
+
                 sound2.instance.winsource.PlayOneShot(sound2.instance.winSound);
                 var won = GameObject.FindGameObjectWithTag("win");
                 var render = won.GetComponent<Renderer>();
                 render.sortingOrder = 20;
+                winner = true;
             }
         }
 

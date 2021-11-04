@@ -7,7 +7,7 @@ public class sound2 : MonoBehaviour
     public static sound2 instance;
     public AudioSource winsource;
     public AudioClip winSound;
-
+   
 
     public void Awake()
     {
@@ -23,6 +23,7 @@ public class sound2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     
+        }
     }
-}
+
