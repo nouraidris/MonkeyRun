@@ -13,6 +13,7 @@ public class character : MonoBehaviour
     GameObject game_over;
     GameObject[] bananas;
    bool winner = false;
+    bool lose = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,23 +45,37 @@ public class character : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "banana" && winner == false )
+        if (collision.gameObject.tag == "banana")
         {
+            if (lose || winner)
+            {
+                return;
+            }
+            else
+            {
+                soundManager.instance.coinsscource.PlayOneShot(soundManager.instance.coinSound);
+                points += 1;
+                ScoreScript.instance.AddPoint();
 
-            soundManager.instance.coinsscource.PlayOneShot(soundManager.instance.coinSound);
-            points += 1;
-            ScoreScript.instance.AddPoint();
-
-            Transform current_banana_pos = collision.gameObject.transform;
-            collision.gameObject.SetActive(false);
+                Transform current_banana_pos = collision.gameObject.transform;
+                collision.gameObject.SetActive(false);
+            }
         }
-        if (collision.gameObject.tag == "rock" && winner == false)
+        if (collision.gameObject.tag == "rock")
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            var over = GameObject.FindGameObjectWithTag("game_over");
-            sound3.instance.losesource.PlayOneShot(sound3.instance.loseSound);
-            var render = over.GetComponent<Renderer>();
-            render.sortingOrder = 10;
+            if (lose || winner)
+            {
+                return;
+            }
+            else
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                var over = GameObject.FindGameObjectWithTag("game_over");
+                sound3.instance.losesource.PlayOneShot(sound3.instance.loseSound);
+                var render = over.GetComponent<Renderer>();
+                render.sortingOrder = 10;
+                lose = true;
+            }
         }
 
     }
